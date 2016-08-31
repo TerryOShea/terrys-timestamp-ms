@@ -14,14 +14,14 @@ app.get('/:strdate', function (req, res) {
         date = moment(strdate, ["MM-DD-Y", "DD-MM-Y", "MMMM-DD-Y", "DD-MMMM-Y", "MMMM-Do-Y"]);
         res.json({
             unix: date.format("X"), 
-            natural: date.format("MMMM-Do-Y")
+            natural: date.format("MMMM Do, Y")
         })
     }
     else if (/\d{5,}/.test(strdate)) {
         date = moment(strdate, "X");
         res.json({
             unix: date.format("X"),
-            natural: date.format("MMMM-Do-Y")
+            natural: date.format("MMMM Do, Y")
         })
     }
     else {
