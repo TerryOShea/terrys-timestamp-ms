@@ -1,11 +1,17 @@
 var express = require('express');
 var app = express();
 var moment = require('moment');
-//var fs = require('fs');
+var path = require('path');
 
-/*app.get('/', function (req, res) {
-  //res.send({'unix': 123, 'natural': 'August 8, 2020'});
-});*/
+app.get('/', function (req, res) {
+    var fileName = path.join(__dirname, 'index.html');
+    res.sendFile(fileName, function (err) {
+        if (err) {
+            console.log(err);
+            res.status(err.status).end();
+        }
+    })
+});
 
 app.get('/:strdate', function (req, res) {
     var strdate = req.params.strdate;
